@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dew Day Trading & Projects</title>
+    <link rel="stylesheet" href="Styles/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Dew Day Trading & Projects</h1>
+        <nav>
+            <ul>
+                <li><a href="#" onclick="showSection('home')">Home</a></li>
+                <li><a href="#" onclick="showSection('about')">About</a></li>
+                <li><a href="#" onclick="showSection('services')">Services</a></li>
+                <li><a href="#" onclick="showSection('projects')">Projects</a></li>
+                <li><a href="#" onclick="showSection('compliance')">Compliance</a></li>
+                <li><a href="#" onclick="showSection('contact')">Contact</a></li>
+                <li><a href="#" onclick="showSection('quotation')">Quotation</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <button class="toggle-mode" onclick="toggleDarkMode()">
+        <img src="Styles/moon1.png" alt="Dark Mode" id="theme-icon" width="30" height="30">
+    </button>
+
+    <section id="home" class="content-section active">
+        <h2>Welcome to Dew Day Trading & Projects</h2>
+        <p>Providing service with integrity!</p>
+    </section>
+
+    <section id="about" class="content-section">
+        <h2>About Us</h2>
+        <p>Since 2017, Dew Day Trading & Projects has been delivering top-quality construction, refurbishment, and project management services.</p>
+    </section>
+
+    <section id="services" class="content-section">
+        <h2>Our Services</h2>
+        <ul>
+            <li>Supply & Delivery</li>
+            <li>Construction</li>
+            <li>Painting & Road Marking</li>
+            <li>Plumbing & Electrical</li>
+            <li>Refurbishment & Waterproofing</li>
+            <li>Safety Management</li>
+            <li>Project Management</li>
+        </ul>
+    </section>
+
+    <section id="projects" class="content-section">
+        <h2>Our Projects</h2>
+        <p>We have successfully worked with clients such as Transnet, Sedibeng TVET College, and Johan Heynes Hospital.</p>
+    </section>
+
+    <section id="compliance" class="content-section">
+        <h2>Compliance & Certifications</h2>
+        <p>We comply with industry regulations such as OHSA, B-BBEE Level 1, and ISO 9001.</p>
+    </section>
+
+    <section id="contact" class="content-section">
+        <h2>Contact Us</h2>
+        <p>Email: <a href="mailto:dewdaytrading@gmail.com">dewdaytrading@gmail.com</a></p>
+        <p>Phone: 073 7618 175</p>
+        <p>Address: 15 E.C Pienaar Str, Vanderbijl Park, 1911</p>
+    </section>
+
+    <section id="quotation" class="content-section">
+        <form id="contactForm">
+            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="email" id="email" placeholder="Your Email" required>
+            <input type="number" id="number" placeholder="Your contact number">
+            <textarea id="message" placeholder="Your Message" required></textarea>
+            <button type="submit">Send</button>
+        </form>
+    </section>
+
+    <script src="scripts/main.js"></script>
+
+</body>
+</html>
