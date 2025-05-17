@@ -121,10 +121,10 @@ footer {
     padding: 15px;
     background-color: #556B2F;
     color: white;
-    position: fixed; /* Ensures the footer stays at the bottom */
-    bottom: 0;
     width: 100%;
+    margin-top: 40px;
 }
+
 
 .contact-info {
     margin-top: 10px;
