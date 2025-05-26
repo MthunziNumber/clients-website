@@ -16,7 +16,6 @@
                 <li><a href="#" onclick="showSection('services')">Services</a></li>
                 <li><a href="#" onclick="showSection('projects')">Projects</a></li>
                 <li><a href="#" onclick="showSection('compliance')">Compliance</a></li>
-                <li><a href="#" onclick="showSection('quotation')">Quotation</a></li>
             </ul>
         </nav>
     </header>
@@ -25,61 +24,66 @@
         <img src="Styles/images/moon1.png" alt="Dark Mode" id="theme-icon" width="30" height="30">
     </button>
 
-    <section id="home" class="content-section active">
-        <h2>Welcome to Dew Day Trading & Projects</h2>
-        <p>Providing service with integrity!</p>
-    </section>
+    <!-- Wrap main content and form in a flex container -->
+    <div class="main-content">
+        <div class="sections">
+            <section id="home" class="content-section active">
+                <h2>Welcome to Dew Day Trading & Projects</h2>
+                <p>Providing service with integrity!</p>
+            </section>
 
-    <section id="about" class="content-section">
-        <h2>About Us</h2>
-        <p>Since 2017, Dew Day Trading & Projects has been delivering top-quality construction, refurbishment, and project management services.</p>
-    </section>
+            <section id="about" class="content-section">
+                <h2>About Us</h2>
+                <p>Since 2017, Dew Day Trading & Projects has been delivering top-quality construction, refurbishment, and project management services.</p>
+            </section>
 
-    <section id="services" class="content-section">
-        <h2>Our Services</h2>
-        <ul>
-            <li>Supply & Delivery</li>
-            <li>Construction</li>
-            <li>Painting & Road Marking</li>
-            <li>Plumbing & Electrical</li>
-            <li>Refurbishment & Waterproofing</li>
-            <li>Safety Management</li>
-            <li>Project Management</li>
-        </ul>
-    </section>
+            <section id="services" class="content-section">
+                <h2>Our Services</h2>
+                <ul>
+                    <li>Supply & Delivery</li>
+                    <li>Construction</li>
+                    <li>Painting & Road Marking</li>
+                    <li>Plumbing & Electrical</li>
+                    <li>Refurbishment & Waterproofing</li>
+                    <li>Safety Management</li>
+                    <li>Project Management</li>
+                </ul>
+            </section>
 
-    <section id="projects" class="content-section">
-        <h2>Our Projects</h2>
-        <p>We have successfully worked with clients such as Transnet, Sedibeng TVET College, and Johan Heynes Hospital.</p>
-    </section>
+            <section id="projects" class="content-section">
+                <h2>Our Projects</h2>
+                <p>We have successfully worked with clients such as Transnet, Sedibeng TVET College, and Johan Heynes Hospital.</p>
+            </section>
 
-    <section id="compliance" class="content-section">
-        <h2>Compliance & Certifications</h2>
-        <p>We comply with industry regulations such as OHSA, B-BBEE Level 1, and ISO 9001.</p>
-    </section>
+            <section id="compliance" class="content-section">
+                <h2>Compliance & Certifications</h2>
+                <p>We comply with industry regulations such as OHSA, B-BBEE Level 1, and ISO 9001.</p>
+            </section>
+        </div>
 
-    <section id="quotation" class="content-section">
-        <form id="contactForm">
-            <input type="text" id="name" placeholder="Your Name" required>
-            <input type="email" id="email" placeholder="Your Email" required>
-            <input type="number" id="number" placeholder="Your contact number">
-            <textarea id="message" placeholder="Your Message" required></textarea>
-            <button type="submit">Send</button>
-        </form>
-    </section>
-
-<footer>
-    <p>&copy; 2024 Dew Day Trading & Projects. All rights reserved.</p>
-    <div class="contact-info">
-        <h2>Contact Us</h2>
-        <p>Email: Dewdaytrading@gmail.com</p>
-        <p>Email: SelloMogoera@ymail.com</p>
-        <p>Phone: +27 73 761 8175</p>
-        <p>Address: 15 E.C Pienaar Str, Vanderbijl Park, 1911</p>
+        <aside class="side-form">
+            <form id="contactForm">
+                <h3>Request a Quotation</h3>
+                <input type="text" id="name" placeholder="Your Name" required>
+                <input type="email" id="email" placeholder="Your Email" required>
+                <input type="number" id="number" placeholder="Your Contact Number">
+                <textarea id="message" placeholder="Your Message" required></textarea>
+                <button type="submit">Send</button>
+            </form>
+        </aside>
     </div>
-</footer>
 
-<script src="scripts/main.js"></script>
+    <footer>
+        <p>&copy; 2024 Dew Day Trading & Projects. All rights reserved.</p>
+        <div class="contact-info">
+            <h2>Contact Us</h2>
+            <p>Email: Dewdaytrading@gmail.com</p>
+            <p>Email: SelloMogoera@ymail.com</p>
+            <p>Phone: +27 73 761 8175</p>
+            <p>Address: 15 E.C Pienaar Str, Vanderbijl Park, 1911</p>
+        </div>
+    </footer>
 
+    <script src="scripts/main.js"></script>
 </body>
 </html>

@@ -42,7 +42,21 @@ nav ul li a {
     font-weight: bold;
 }
 
+/* Main content layout */
+.main-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
 /* Sections */
+.sections {
+    flex: 2;
+    padding: 20px;
+}
+
 .content-section {
     display: none;
     padding: 40px;
@@ -59,43 +73,47 @@ nav ul li a {
     display: block;
 }
 
-/* Contact Form Styling */
-form {
+/* Sidebar form */
+.side-form {
+    flex: 1;
+    background-color: #f1f1f1;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    min-width: 280px;
+}
+
+.side-form form {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    width: 100%;
-    max-width: 600px;
-    margin: auto;
 }
 
-input, textarea {
+.side-form input,
+.side-form textarea {
     width: 100%;
     padding: 12px;
-    margin: 10px 0;
+    margin-bottom: 10px;
+    font-size: 16px;
     border: 2px solid #556B2F;
     border-radius: 5px;
-    font-size: 16px;
 }
 
-textarea {
+.side-form textarea {
     height: 120px;
-    resize: vertical;
 }
 
-/* Form Button */
-button {
+.side-form button {
+    padding: 10px;
     background-color: #556B2F;
     color: white;
-    padding: 12px 20px;
     border: none;
     cursor: pointer;
-    font-size: 16px;
     border-radius: 5px;
+    transition: background-color 0.3s;
 }
 
-button:hover {
-    background-color: #6B8E23; /* Lighter Lime Green */
+.side-form button:hover {
+    background-color: #6B8E23;
 }
 
 /* Dark Mode Button */
@@ -108,7 +126,6 @@ button.toggle-mode {
     border: none;
     padding: 10px;
     cursor: pointer;
-    
     border-radius: 5px;
 }
 
@@ -116,6 +133,12 @@ button.toggle-mode:hover {
     background-color: #6B8E23;
 }
 
+/* General button hover */
+button:hover {
+    background-color: #6B8E23;
+}
+
+/* Footer */
 footer {
     text-align: center;
     padding: 15px;
@@ -125,8 +148,19 @@ footer {
     margin-top: 40px;
 }
 
-
+/* Contact info in footer */
 .contact-info {
     margin-top: 10px;
     font-size: 14px;
+}
+
+/* Responsive layout */
+@media (max-width: 768px) {
+    .main-content {
+        flex-direction: column;
+    }
+
+    .side-form {
+        margin-top: 20px;
+    }
 }
