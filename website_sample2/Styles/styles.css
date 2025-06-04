@@ -19,7 +19,7 @@ body.light-mode {
 
 body.dark-mode {
     background-color: #121212;
-    background-image: url("images/construction.png");
+    background-image: url("Styles/images/construction.png");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -36,10 +36,38 @@ header, nav, footer {
     text-align: center;
 }
 
+.header-container {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    justify-content: space-between;
+}
+
+#logo {
+    height: 100px;
+    background-color: #556B2F;
+    padding: 5px;
+    border-radius: 8px;
+}
+
+.header-title {
+    flex-grow: 1;
+    text-align: center;
+    color: white;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
 nav ul {
     list-style-type: none;
-    padding: 10px;
-    text-align: center;
+    padding: 0;
+    margin: 10px 0 0 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
 }
 
 nav ul li {

@@ -7,22 +7,30 @@
     <link rel="stylesheet" href="Styles/styles.css">
 </head>
 <body>
-    <header>
-        <h1>Dew Day Trading & Projects</h1>
-        <nav>
-            <ul>
-                <li><a href="#" onclick="showSection('home')">Home</a></li>
-                <li><a href="#" onclick="showSection('about')">About</a></li>
-                <li><a href="#" onclick="showSection('services')">Services</a></li>
-                <li><a href="#" onclick="showSection('projects')">Projects</a></li>
-                <li><a href="#" onclick="showSection('compliance')">Compliance</a></li>
-            </ul>
-        </nav>
-    </header>
+<header>
+    <div class="header-container">
+        <img src="Styles/images/company_logo.png" alt="Company Logo" id="logo">
+        <div class="header-title">
+            <h1>Dew Day Trading & Projects</h1>
+            <nav>
+                <ul>
+                    <li><a href="#" onclick="showSection('home')">Home</a></li>
+                    <li><a href="#" onclick="showSection('about')">About</a></li>
+                    <li><a href="#" onclick="showSection('services')">Services</a></li>
+                    <li><a href="#" onclick="showSection('projects')">Projects</a></li>
+                    <li><a href="#" onclick="showSection('compliance')">Compliance</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
 
     <button class="toggle-mode" onclick="toggleDarkMode()">
         <img src="Styles/images/moon1.png" alt="Dark Mode" id="theme-icon" width="30" height="30">
     </button>
+
+    
 
     <!-- Wrap main content and form in a flex container -->
     <div class="main-content">
