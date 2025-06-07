@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     // Show the default section (Home)
     showSection('home');
 
@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function() {
         body.classList.add(localStorage.getItem("theme"));
     }
 
-    toggleButton.addEventListener("click", function() {
+    toggleButton.addEventListener("click", function () {
         if (body.classList.contains("light-mode")) {
             body.classList.remove("light-mode");
             body.classList.add("dark-mode");
@@ -27,30 +27,40 @@ document.addEventListener("DOMContentLoaded", function() {
     // Contact Form Submission
     const contactForm = document.getElementById("contactForm");
     if (contactForm) {
-        contactForm.addEventListener("submit", function(event) {
+        contactForm.addEventListener("submit", async function (event) {
             event.preventDefault();
 
-            let name = document.getElementById("name").value;
-            let email = document.getElementById("email").value;
-            let message = document.getElementById("message").value;
+            const name = document.getElementById("name").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const number = document.getElementById("number").value.trim();
+            const message = document.getElementById("message").value.trim();
 
-            if (name === "" || email === "" || message === "") {
-                alert("Please fill in all fields.");
+            if (!name || !email || !message) {
+                alert("Please fill in all required fields.");
                 return;
             }
 
-            alert("Thank you, " + name + "! Your message has been received.");
-            contactForm.reset();
+            const data = { name, email, number, message };
+
+            try {
+                const response = await fetch('/send-quotation', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                if (response.ok) {
+                    alert("Thank you, " + name + "! Your message has been sent.");
+                    contactForm.reset();
+                } else {
+                    alert("Failed to send your message. Please try again.");
+                }
+            } catch (error) {
+                alert("An error occurred. Please try again later.");
+                console.error(error);
+            }
         });
     }
-
-    // Load Footer Dynamically
-    fetch("footer.html")
-        .then(response => response.text())
-        .then(data => {
-            document.body.insertAdjacentHTML("beforeend", data);
-        });
-
 });
 
 // Function to show the selected section
