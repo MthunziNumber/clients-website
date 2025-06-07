@@ -73,3 +73,12 @@ function showSection(sectionId) {
 
     document.getElementById(sectionId).classList.add("active"); // Show selected section
 }
+
+const BACKEND_URL = "https://www.dewdaytrading.com";
+
+fetch(`${BACKEND_URL}/send-quotation`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+});
+
