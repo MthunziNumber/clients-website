@@ -6,7 +6,7 @@
     font-family: Arial, sans-serif;
 }
 
-/* Light and Dark Mode */
+/* Light Mode */
 body.light-mode {
     background-color: #f5f5f5;
     background-image: url("images/construction.png");
@@ -16,21 +16,31 @@ body.light-mode {
     background-attachment: fixed;
     color: #333;
 }
-
+/* Dark mode */ 
 body.dark-mode {
-    background-color: #121212;
-    background-image: url("Styles/images/construction.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: fixed;
-    color: #ddd;
+    background-color: #333333;
+    background-image: url("images/construction.png");
+    color: #ffffff;
 }
+
+.dark-mode .content-section {
+    background-color: rgba(51, 51, 51, 0.9);
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.dark-mode .side-form {
+    background-color: rgba(51, 51, 51, 0.9);
+    color: white;
+    border: 2px solid #6B8E23;
+}
+
 
 
 /* Dark Lime Green Theme */
 header, nav, footer {
-    background-color: #556B2F; /* Dark Lime Green */
+    background-color: #556B2F;
     color: white;
     padding: 15px;
     text-align: center;
@@ -61,8 +71,10 @@ header h1 {
     font-size: 2rem;
 }
 
+
+/* List style */
 nav ul {
-    list-style-type: none;
+    list-style: none;
     padding: 0;
     margin: 10px 0 0 0;
     display: flex;
@@ -71,6 +83,7 @@ nav ul {
 }
 
 nav ul li {
+    list-style: none;
     display: inline;
     margin: 0 15px;
 }
@@ -80,6 +93,19 @@ nav ul li a {
     text-decoration: none;
     font-weight: bold;
 }
+
+.content-section ul {
+    list-style: none; 
+    padding: 0;
+    margin: 0;
+}
+
+.content-section ul li {
+    list-style: none;
+    padding: 5px 0;
+}
+
+
 
 /* Main content layout */
 .main-content {
