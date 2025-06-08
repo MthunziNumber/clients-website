@@ -8,14 +8,28 @@
 
 /* Light Mode */
 body.light-mode {
-    background-color: #f5f5f5;
+    background-color: #e0e0e0;
     background-image: url("images/construction.png");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
-    color: #333;
+    color: #222;
 }
+
+.light-mode .content-section {
+    background-color: rgba(224, 224, 224, 0.85);
+    color: #222;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.light-mode .side-form {
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #222;
+    border: 2px solid #556B2F;
+}
+
 /* Dark mode */ 
 body.dark-mode {
     background-color: #333333;
