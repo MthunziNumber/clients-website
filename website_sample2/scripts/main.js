@@ -1,8 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Set up default section
     showSection('home');
 
-    // Dark Mode Toggle
     const toggleButton = document.querySelector(".toggle-mode");
     const body = document.body;
 
@@ -14,9 +12,18 @@ document.addEventListener("DOMContentLoaded", function () {
         localStorage.setItem("theme", newTheme);
     });
 
-    // Contact Form Submission
     const contactForm = document.getElementById("contactForm");
-    if (contactForm) {
+    if (contactForm) 
+        let spinner = document.createElement('div');
+        spinner.id = "formSpinner";
+        spinner.innerHTML = `
+            <div class="spinner-overlay">
+                <div class="spinner"></div>
+            </div>
+        `;
+        spinner.style.display = 'none';
+        contactForm.appendChild(spinner);
+
         contactForm.addEventListener("submit", async function (event) {
             event.preventDefault();
 
@@ -25,13 +32,16 @@ document.addEventListener("DOMContentLoaded", function () {
             const number = document.getElementById("number").value.trim();
             const message = document.getElementById("message").value.trim();
 
-            if (!name || !validateEmail(email) || !message) {
+            if (!name || !validateEmail(email) || !number || !message) {
                 alert("Please enter valid information in all required fields.");
                 return;
             }
 
             const data = { name, email, number, message };
             const BACKEND_URL = "https://www.dewdaytrading.com";
+
+            spinner.style.display = 'block';
+            setFormEnabled(contactForm, false);
 
             try {
                 const response = await fetch(`${BACKEND_URL}/send-quotation`, {
@@ -41,11 +51,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
 
                 if (!response.ok) throw new Error(`Error ${response.status}: ${response.statusText}`);
+                spinner.style.display = 'none';
+                contactForm.innerHTML = "<p>Thank you! We will contact you soon.</p>";
 
-                document.getElementById('contactForm').innerHTML = "<p>Thank you! We will contact you soon.</p>";
-                alert(`Thank you, ${name}! Your message has been sent.`);
-                contactForm.reset();
             } catch (error) {
+                spinner.style.display = 'none';
+                setFormEnabled(contactForm, true);
                 alert(`Network issue: ${error.message}`);
                 console.error("Fetch error:", error);
             }
@@ -53,7 +64,14 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
-// Function to show the selected section
+function setFormEnabled(form, enabled) {
+    Array.from(form.elements).forEach(el => {
+        if (el.tagName !== "DIV") {
+            el.disabled = !enabled;
+        }
+    });
+}
+
 function showSection(sectionId) {
     const section = document.getElementById(sectionId);
     if (!section) return console.error("Section does not exist:", sectionId);
@@ -62,7 +80,6 @@ function showSection(sectionId) {
     section.classList.add("active");
 }
 
-// Email Validation Function
 function validateEmail(email) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
