@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <base href="https://www.dewdaytrading.com/">
     <title>Dew Day Trading & Projects</title>
-    <link rel="stylesheet" href="Styles/styles.css">
+    <link rel="stylesheet" href="{% static 'main/Styles/styles.css' %}">
 </head>
 <body>
     <header>
         <div class="header-container">
-            <img src="Styles/images/company_logo.png" alt="Company Logo" id="logo">
+            <img src="{% static 'main/Styles/images/company_logo.png' %}" alt="Company Logo">
             <div class="header-title">
                 <h1>Dew Day Trading & Projects</h1>
                 <nav>
@@ -27,7 +28,7 @@
     </header>
 
     <button class="toggle-mode" onclick="toggleDarkMode()">
-        <img src="Styles/images/moon1.png" alt="Dark Mode" id="theme-icon" width="30" height="30">
+        <img src="{% static 'main/Styles/images/moon1.png' %}" alt="Dark Mode" id="theme-icon" width="30" height="30">
     </button>
 
     <div class="main-content">
@@ -93,6 +94,6 @@
         </div>
     </footer>
 
-    <script src="scripts/main.js"></script>
+    <script src="{% static 'main/scripts/main.js' %}"></script>
 </body>
 </html>

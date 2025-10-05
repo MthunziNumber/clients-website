@@ -9,7 +9,7 @@
 /* Light Mode */
 body.light-mode {
     background-color: #e0e0e0;
-    background-image: url("images/construction.png");
+    background-image: url('/static/main/Styles/images/bg.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -33,7 +33,9 @@ body.light-mode {
 /* Dark mode */ 
 body.dark-mode {
     background-color: #333333;
-    background-image: url("images/construction.png");
+    background-image: url('/static/main/Styles/images/bg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
     color: #ffffff;
 }
 

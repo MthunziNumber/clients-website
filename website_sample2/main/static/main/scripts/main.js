@@ -14,7 +14,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const contactForm = document.getElementById("contactForm");
     if (contactForm) 
-        let spinner = document.createElement('div');
         spinner.id = "formSpinner";
         spinner.innerHTML = `
             <div class="spinner-overlay">
@@ -62,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     }
-});
+);
 
 function setFormEnabled(form, enabled) {
     Array.from(form.elements).forEach(el => {
