@@ -11,7 +11,7 @@ body.light-mode {
     background-color: #e0e0e0;
     background-image: url('images/construction.png');
     background-size: cover;
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     background-position: center;
     background-attachment: fixed;
     color: #222;
@@ -34,8 +34,9 @@ body.light-mode {
 body.dark-mode {
     background-color: #333333;
     background-image: url('images/construction.png');
-    background-size: cover;
-    background-repeat: no-repeat;
+    background-repeat: repeat;
+    background-size: 50% 50%;
+    background-position: top left;
     color: #ffffff;
 }
 
