@@ -37,7 +37,8 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             const data = { name, email, number, message };
-            const BACKEND_URL = "https://www.dewdaytrading.com";
+            // const BACKEND_URL = "https://www.dewdaytrading.com";
+            const BACKEND_URL = "http://127.0.0.1:8001";
 
             spinner.style.display = 'block';
             setFormEnabled(contactForm, false);
