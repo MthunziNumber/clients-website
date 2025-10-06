@@ -4,16 +4,25 @@ document.addEventListener("DOMContentLoaded", function () {
     const toggleButton = document.querySelector(".toggle-mode");
     const body = document.body;
 
-    body.className = localStorage.getItem("theme") || "light-mode";
+    // Load saved theme
+    const savedTheme = localStorage.getItem("theme") || "light-mode";
+    body.className = savedTheme;
 
+    // Toggle theme while preserving entertainment mode
     toggleButton.addEventListener("click", function () {
         const newTheme = body.classList.contains("light-mode") ? "dark-mode" : "light-mode";
-        body.className = newTheme;
+        if (body.classList.contains("entertainment-mode")) {
+            body.className = `${newTheme} entertainment-mode`;
+        } else {
+            body.className = newTheme;
+        }
         localStorage.setItem("theme", newTheme);
     });
 
+    // Contact form logic
     const contactForm = document.getElementById("contactForm");
-    if (contactForm) 
+    if (contactForm) {
+        const spinner = document.createElement("div");
         spinner.id = "formSpinner";
         spinner.innerHTML = `
             <div class="spinner-overlay">
@@ -37,7 +46,6 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             const data = { name, email, number, message };
-            // const BACKEND_URL = "https://www.dewdaytrading.com";
             const BACKEND_URL = "http://127.0.0.1:8001";
 
             spinner.style.display = 'block';
@@ -62,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     }
-);
+});
 
 function setFormEnabled(form, enabled) {
     Array.from(form.elements).forEach(el => {
@@ -76,8 +84,17 @@ function showSection(sectionId) {
     const section = document.getElementById(sectionId);
     if (!section) return console.error("Section does not exist:", sectionId);
 
+    // Show the selected section
     document.querySelectorAll(".content-section").forEach(s => s.classList.remove("active"));
     section.classList.add("active");
+
+    // Remove entertainment mode
+    document.body.classList.remove("entertainment-mode");
+
+    // Apply entertainment background only when section is 'entertainment'
+    if (sectionId === "entertainment") {
+        document.body.classList.add("entertainment-mode");
+    }
 }
 
 function validateEmail(email) {
