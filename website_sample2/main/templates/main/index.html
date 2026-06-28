@@ -74,12 +74,16 @@
         </div>
 
         <aside class="side-form">
-            <form id="contactForm">
+            <form id="contactForm" novalidate>
                 <h3>Request a Quotation</h3>
-                <input type="text" id="name" placeholder="Your Name" required>
-                <input type="email" id="email" placeholder="Your Email" required>
-                <input type="number" id="number" placeholder="Your Contact Number" required>
-                <textarea id="message" placeholder="Your Message" required></textarea>
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Your Name" required>
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Your Email" required>
+                <label for="number">Contact Number</label>
+                <input type="tel" id="number" name="number" placeholder="Your Contact Number" required>
+                <label for="message">Message</label>
+                <textarea id="message" name="message" placeholder="Your Message" required></textarea>
                 <button type="submit">Send</button>
             </form>
         </aside>

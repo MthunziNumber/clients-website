@@ -81,6 +81,12 @@ header, nav, footer {
     text-align: center;
 }
 
+.tagline {
+    margin-top: 8px;
+    font-size: 0.95rem;
+    opacity: 0.95;
+}
+
 .header-container {
     display: flex;
     align-items: center;
@@ -246,8 +252,24 @@ footer {
 
 
 @media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
     .main-content {
         flex-direction: column;
+        padding: 0 12px;
+    }
+
+    .sections,
+    .side-form {
+        padding: 12px;
     }
 
     .side-form {
