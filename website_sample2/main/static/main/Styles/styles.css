@@ -94,13 +94,6 @@ header, nav, footer {
     justify-content: space-between;
 }
 
-#logo {
-    height: 100px;
-    background-color: #556B2F;
-    padding: 5px;
-    border-radius: 8px;
-}
-
 .header-title {
     flex-grow: 1;
     text-align: center;

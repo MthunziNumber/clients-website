@@ -46,13 +46,12 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             const data = { name, email, number, message };
-            const BACKEND_URL = "http://127.0.0.1:8001";
 
             spinner.style.display = 'block';
             setFormEnabled(contactForm, false);
 
             try {
-                const response = await fetch(`${BACKEND_URL}/send-quotation`, {
+                const response = await fetch('/send-quotation', {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(data)
