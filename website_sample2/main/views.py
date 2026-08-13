@@ -36,7 +36,7 @@ Contact: {number}
 Message: {message}
 """
 
-        recipient = os.getenv('CONTACT_EMAIL', 'dewdaytrading@gmail.com')
+        recipient = getattr(settings, 'CONTACT_EMAIL', 'dewdaytrading@gmail.com')
         send_mail(
             subject,
             email_body,
