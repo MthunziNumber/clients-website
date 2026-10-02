@@ -1,21 +1,24 @@
 # Dew Day Trading & Projects
 
-This project is a Django-based website for Dew Day Trading & Projects. It includes a polished landing page, service sections, a quotation request form, and deployment-ready settings for Azure App Service.
+This project is the Dew Day Trading & Projects Django website, configured for Cloudflare Workers Containers.
 
 ## What the app does
 
 - Displays company information, services, projects, compliance details, and entertainment offerings
 - Provides a quotation request form for prospective clients
 - Sends form submissions to the configured contact inbox
-- Supports local development and Azure deployment with environment-based settings
+- Serves static assets through WhiteNoise
+- Runs without a database and uses environment-based production secrets
 
 ## Project structure
 
 - `dewday/` – Django project settings and routing
 - `main/` – app logic, templates, views, static assets, and tests
 - `requirements.txt` – Python dependencies
-- `startup.sh` – startup script for Azure App Service
-- `azure.yaml` – deployment metadata
+- `startup.sh` – starts the Django application server
+- `.env.example` – local and production environment variable template
+- `wrangler.jsonc` and `src/index.ts` – Cloudflare Worker and Container configuration
+- `scripts/deploy.py` – validates `.env`, uploads its values as Worker secrets, and deploys
 
 ## Run the app locally
 
@@ -33,16 +36,10 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### 3. Run database migrations
+### 3. Start the development server
 
 ```bash
-python manage.py migrate
-```
-
-### 4. Start the development server
-
-```bash
-python manage.py runserver 0.0.0.0:8000
+DEBUG=True python manage.py runserver 0.0.0.0:8000
 ```
 
 Then open:
@@ -54,7 +51,7 @@ http://127.0.0.1:8000/
 ## Test the app
 
 ```bash
-python manage.py test
+DEBUG=True python manage.py test
 ```
 
 ## How the quotation form works
@@ -69,89 +66,30 @@ dewdaytrading@gmail.com
 
 ## Environment variables
 
-The app uses environment variables for deployment-friendly configuration.
+Production values are read from `.env`. This site does not store submissions or use a database; the form sends them directly by email. Generate a key with `python -c "import secrets; print(secrets.token_urlsafe(64))"`, then set `DEBUG=False`, that `SECRET_KEY`, exact `ALLOWED_HOSTS` and `CSRF_TRUSTED_ORIGINS`, and SMTP account details. For Gmail, use an App Password rather than the account password. `npm run deploy` uploads the `.env` values as Worker secrets without printing or committing them.
 
-Recommended variables:
+Set the deployed `dewday.<your-subdomain>.workers.dev` hostname in `ALLOWED_HOSTS` and `https://dewday.<your-subdomain>.workers.dev` in `CSRF_TRUSTED_ORIGINS` inside `.env`. Add any custom HTTPS domain there too. `CONTACT_EMAIL` is the inbox that receives quote requests. `EMAIL_HOST_USER` and `EMAIL_HOST_PASSWORD` are your SMTP login and app password.
 
-```bash
-SECRET_KEY=your-secret-key
-DEBUG=False
-ALLOWED_HOSTS=127.0.0.1,localhost
-CONTACT_EMAIL=dewdaytrading@gmail.com
-DEFAULT_FROM_EMAIL=dewdaytrading@gmail.com
-EMAIL_BACKEND=django.core.mail.backends.smtp.EmailBackend
-EMAIL_HOST=smtp.gmail.com
-EMAIL_PORT=587
-EMAIL_USE_TLS=True
-EMAIL_HOST_USER=dewdaytrading@gmail.com
-EMAIL_HOST_PASSWORD=your-gmail-app-password
-```
+## Cloudflare deployment
 
-> For Gmail, use a 16-character App Password from your Google account, not your normal Gmail password.
-
-## Azure deployment steps
-
-### 1. Sign in to Azure
+Cloudflare Pages alone cannot run Django. This deployment uses Cloudflare Workers Containers and a Durable Object to proxy requests to the Django container. No PostgreSQL or D1 database is required for this email-only form.
 
 ```bash
-az login
+npm install
+npx wrangler login
 ```
 
-### 2. Create a resource group
+Edit `ALLOWED_HOSTS` and `CSRF_TRUSTED_ORIGINS` in `wrangler.jsonc` to include the exact `workers.dev` hostname and any custom HTTPS hostname you will use. Update `CONTACT_EMAIL` if quote requests should go to a different inbox. These are configuration values, not secrets.
 
 ```bash
-az group create --name dewday-rg --location eastus
+npm run build
+npm run deploy
 ```
 
-### 3. Create an App Service plan
+Wrangler builds the Docker image and deploys the Worker and container. Open the URL printed by Wrangler after deployment.
+
+For local container development, run `npm run dev`; Docker must be installed and running. Set `DEBUG=True` for local Django tests:
 
 ```bash
-az appservice plan create --name dewday-plan --resource-group dewday-rg --sku B1 --is-linux
+SECRET_KEY=local-test-key DEBUG=True python manage.py test
 ```
-
-### 4. Create the web app
-
-```bash
-az webapp create --resource-group dewday-rg --plan dewday-plan --name your-unique-app-name --runtime "PYTHON|3.12"
-```
-
-### 5. Configure app settings
-
-```bash
-az webapp config appsettings set \
-  --resource-group dewday-rg \
-  --name your-unique-app-name \
-  --settings \
-  SECRET_KEY="replace-with-a-strong-secret" \
-  DEBUG="False" \
-  ALLOWED_HOSTS="your-unique-app-name.azurewebsites.net,www.dewday.com" \
-  CONTACT_EMAIL="dewdaytrading@gmail.com" \
-  EMAIL_BACKEND="django.core.mail.backends.console.EmailBackend"
-```
-
-### 6. Deploy the code
-
-```bash
-cd /workspaces/clients-website/website_sample2
-zip -r site.zip . -x ".git/*" ".venv/*" "__pycache__/*"
-az webapp deploy --resource-group dewday-rg --name your-unique-app-name --src-path site.zip --type zip
-```
-
-### 7. Restart and browse
-
-```bash
-az webapp restart --resource-group dewday-rg --name your-unique-app-name
-```
-
-Then open:
-
-```text
-https://your-unique-app-name.azurewebsites.net
-```
-
-## Notes for production
-
-- Use a strong secret key in production
-- Use HTTPS and a custom domain for `www.dewday.com`
-- For real email delivery, replace the console email backend with a real SMTP provider later
-- Consider using PostgreSQL instead of SQLite for production workloads

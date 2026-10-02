@@ -1,6 +1,0 @@
-name: dewday-site
-services:
-  web:
-    project: .
-    language: python
-    host: appservice

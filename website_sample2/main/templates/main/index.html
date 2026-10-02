@@ -58,7 +58,7 @@
 
             <section id="projects" class="content-section">
                 <h2>Our Projects</h2>
-                <p>We have successfully worked with clients such as Transnet, Sedibeng TVET College, and Johan Heynes Hospital.</p>
+                <p>We have successfully delivered projects across construction, refurbishment, and project management.</p>
             </section>
 
             <section id="compliance" class="content-section">
@@ -74,6 +74,7 @@
 
         <aside class="side-form">
             <form id="contactForm" novalidate>
+                {% csrf_token %}
                 <h3>Request a Quotation</h3>
                 <label for="name">Name</label>
                 <input type="text" id="name" name="name" placeholder="Your Name" required>
@@ -96,8 +97,8 @@
         <p>&copy; 2024 Dew Day Trading & Projects. All rights reserved.</p>
         <div class="contact-info">
             <h2>Contact Us</h2>
-            <p>Email: Dewdaytrading@gmail.com</p>
-            <p>Email: SelloMogoera@ymail.com</p>
+            <p>Email: dewdaytrading@gmail.com</p>
+            <p>Email: SelloMogoera@gmail.com</p>
             <p>Phone: +27 73 761 8175</p>
             <p>Address: 15 E.C Pienaar Str, Vanderbijl Park, 1911</p>
         </div>

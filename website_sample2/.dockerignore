@@ -1,0 +1,14 @@
+.git
+.env
+.env.*
+!.env.example
+.venv
+venv
+__pycache__
+*.py[cod]
+db.sqlite3
+staticfiles
+node_modules
+.wrangler
+old_main.py
+azure.yaml

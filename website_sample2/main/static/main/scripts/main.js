@@ -46,6 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             const data = { name, email, number, message };
+            const csrfToken = contactForm.querySelector('[name=csrfmiddlewaretoken]').value;
 
             spinner.style.display = 'block';
             setFormEnabled(contactForm, false);
@@ -53,7 +54,10 @@ document.addEventListener("DOMContentLoaded", function () {
             try {
                 const response = await fetch('/send-quotation', {
                     method: "POST",
-                    headers: { "Content-Type": "application/json" },
+                    headers: {
+                        "Content-Type": "application/json",
+                        "X-CSRFToken": csrfToken
+                    },
                     body: JSON.stringify(data)
                 });
 
