@@ -22,12 +22,12 @@
       }
     ]
   },
-  "migrations": [
-    {
-      "tag": "v1",
-      "new_sqlite_classes": ["DjangoContainer"]
+  "exports": {
+    "DjangoContainer": {
+      "type": "durable-object",
+      "storage": "sqlite"
     }
-  ],
+  },
   "observability": {
     "enabled": true
   }
